@@ -19,6 +19,29 @@
   </section>
 <% end %>
 
+<h2>Review Statistics:</h2>
+  <h3>Top Reviews:</h3>
+  <section id="top-reviews">
+    <% @item.sort_reviews(:desc, 3).each do |review| %>
+        <ul>
+          <li>Title: <%= review.title %></li>
+          <li>Rating: <%= review.rating %></li>
+        </ul>
+      <% end  %>
+    </section>
+
+  <h3>Worst Reviews:</h3>
+  <section id="worst-reviews">
+    <% @item.sort_reviews(:asc, 3).each do |review| %>
+      <ul>
+        <li>Title: <%= review.title %></li>
+        <li>Rating: <%= review.rating %></li>
+      </ul>
+    <% end  %>
+  </section>
+
+  <h3>Average Rating: <%= @item.average_rating %></h3>
+
 <%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
 <%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
 <%= link_to 'Add Review', "/items/#{@item.id}/reviews/new" %>

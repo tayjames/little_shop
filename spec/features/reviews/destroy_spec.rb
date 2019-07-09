@@ -43,7 +43,6 @@ RSpec.describe "Delete a Review", type: :feature do
         expect(current_path).to eq(item_path(@hippo))
         expect(page).to_not have_content(@review_2.title)
         expect(page).to_not have_content(@review_2.content)
-        expect(page).to_not have_content(@review_2.rating)
 
         within "#review-#{@review_1.id}" do
           expect(page).to have_content(@review_1.title)
