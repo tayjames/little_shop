@@ -63,6 +63,7 @@ RSpec.describe Merchant do
         order_items_1 = OrderItem.create!(order: order_1, item: ogre, quantity: 1, price_per_item: 3.00)
 
         expect(megan.has_orders?).to eq(true)
+        expect(brian.has_orders?).to eq(false)
       end
     end
   end
