@@ -1,11 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Merchant do
-  describe 'Relationships' do
-    it {should have_many :items}
-  end
-
-  describe "instance methods" do
+RSpec.describe "Merchant Statistics", type: :feature do
+  describe "When I visit a merchant's show page" do
     before(:each) do
       @megan = Merchant.create!(name: 'Megans Marmalades', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218)
       @brian = Merchant.create!(name: 'Brians Bagels', address: '125 Main St', city: 'Denver', state: 'CO', zip: 80218)
@@ -27,24 +23,46 @@ RSpec.describe Merchant do
       @order_items_5 = OrderItem.create!(order: @order_5, item: @hippo, quantity: 1, price_per_item: 3.00)
     end
 
-    describe "#count_of_items" do
-      it "returns the count of items for that merchant" do
-        expect(@megan.count_of_items).to eq(2)
-        expect(@brian.count_of_items).to eq(1)
-      end
-    end
+    describe "I see statistics for that merchant" do
+      it "displays a count of items for that merchant" do
+        visit "/merchants/#{@megan.id}"
 
-    describe "#average_item_price" do
-      it "returns the average price of that merchant's items" do
-        expect(@megan.average_item_price).to eq(35)
-        expect(@brian.average_item_price).to eq(50)
-      end
-    end
+        within "#statistics-#{@megan.id}" do
+          expect(page).to have_content("Count of Items: 2")
+        end
 
-    describe "#distinct_cities" do
-      it "returns a list of distinct cities where the merchant's items have been ordered" do
-        expect(@megan.distinct_cities).to eq(["Heaven", "Los Angeles"])
-        expect(@brian.distinct_cities).to eq(["Paris", "Portland"])
+        visit "/merchants/#{@brian.id}"
+
+        within "#statistics-#{@brian.id}" do
+          expect(page).to have_content("Count of Items: 1")
+        end
+      end
+
+      it "displays average price of that merchant's items" do
+        visit "/merchants/#{@megan.id}"
+        within "#statistics-#{@megan.id}" do
+          expect(page).to have_content("Average Item Price: #{number_to_currency(35)}")
+        end
+
+        visit "/merchants/#{@brian.id}"
+
+        within "#statistics-#{@brian.id}" do
+          expect(page).to have_content("Average Item Price: #{number_to_currency(50)}")
+        end
+      end
+
+      it "displays distinct cities where my items have been ordered" do
+        visit "/merchants/#{@brian.id}"
+
+        within "#statistics-#{@brian.id}" do
+          expect(page).to have_content('Cities you can find our monsters: ["Paris", "Portland"]')
+        end
+
+        visit "/merchants/#{@megan.id}"
+
+        within "#statistics-#{@megan.id}" do
+          expect(page).to have_content('Cities you can find our monsters: ["Heaven", "Los Angeles"]')
+        end
       end
     end
   end
