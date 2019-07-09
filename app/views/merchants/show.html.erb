@@ -14,4 +14,7 @@
 </section>
 
 <%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
-<%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
+
+<% if !@merchant.has_orders? %>
+  <%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
+<% end %>

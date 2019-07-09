@@ -12,4 +12,8 @@ class Merchant < ApplicationRecord
   def distinct_cities
     self.items.joins(:orders).distinct("orders.city").order("orders.city").pluck("orders.city")
   end
+
+  def has_orders?
+    self.items.joins(:order_items).exists?
+  end
 end
