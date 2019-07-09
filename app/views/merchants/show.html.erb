@@ -5,5 +5,13 @@
   <p><%= @merchant.city %> <%= @merchant.state %> <%= @merchant.zip %></p>
 </section>
 
+<h2>Statistics:</h2>
+
+<section id="statistics-<%= @merchant.id %>">
+  <p>Count of Items: <%= @merchant.count_of_items %></p>
+  <p>Average Item Price: <%= number_to_currency(@merchant.average_item_price) %></p>
+  <p>Cities you can find our monsters: <%= @merchant.distinct_cities %></p>
+</section>
+
 <%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
 <%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
