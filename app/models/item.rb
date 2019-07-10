@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
   has_many :order_items
   has_many :orders, through: :order_items
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   def sort_reviews(direction, limit)
     self.reviews.order(rating: direction, created_at: :asc).limit(limit)
