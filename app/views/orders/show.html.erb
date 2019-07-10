@@ -19,4 +19,4 @@
 <% end %>
 
 <h3>Grand Total: <%= number_to_currency(@order_items.grandtotal(@order)) %></h3>
-<h2>Created on: <%= @order.created_at %></h2>
+<h2>Created on: <%= @order.created_at.to_date %></h2>
