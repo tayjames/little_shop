@@ -12,4 +12,8 @@ class Item < ApplicationRecord
   def average_rating
     self.reviews.average(:rating)
   end
+
+  def ordered?
+    self.order_items.exists?
+  end
 end
