@@ -119,7 +119,7 @@ RSpec.describe "New Order Page", type: :feature do
             expect(page).to have_content("Subtotal: #{number_to_currency(order_items_2.subtotal)}")
           end
 
-          expect(page).to have_content("Created on: #{new_order.created_at}")
+          expect(page).to have_content("Created on: #{new_order.created_at.to_date}")
           expect(page).to have_content("Grand Total: #{number_to_currency(120)}")
         end
       end
