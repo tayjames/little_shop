@@ -2,8 +2,8 @@
 
 <% @items.each do |item| %>
   <section id="item-<%= item.id %>">
-    <h1>Name: <%= item.name %></h1>
-    <p>Merchant: <%= item.merchant.name %></p>
+    <h1>Name: <%= link_to item.name, "/items/#{item.id}" %></h1>
+    <p>Merchant: <%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
     <p>Price: <%= number_to_currency(item.price) %></p>
     <p>Quantity: <%= cart.item_count(item.id) %></p>
     <p>Subtotal: <%= number_to_currency(cart.subtotal(item.id)) %></p>
