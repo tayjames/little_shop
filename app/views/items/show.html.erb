@@ -43,5 +43,9 @@
   <h3>Average Rating: <%= @item.average_rating %></h3>
 
 <%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
-<%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
+
+<% if !@item.ordered? %>
+  <%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
+<% end %>
+
 <%= link_to 'Add Review', "/items/#{@item.id}/reviews/new" %>
