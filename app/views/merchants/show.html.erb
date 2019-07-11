@@ -14,7 +14,7 @@
     <section class="scrollable" id="statistics-<%= @merchant.id %>">
       <p>Count of Items: <%= @merchant.count_of_items %></p>
       <p>Average Item Price: <%= number_to_currency(@merchant.average_item_price) %></p>
-      <p>Cities you can find our monsters: <%= @merchant.distinct_cities %></p>
+      <p>Cities you can find our monsters: <%= @merchant.distinct_cities.join(", ") %></p>
     </section>
   </section>
 
