@@ -13,3 +13,136 @@
  *= require_tree .
  *= require_self
  */
+body {
+  background-color: linen;
+  /* background-image: url("https://payload.cargocollective.com/1/20/666861/13467193/R0022978_2500_c.jpg"); */
+}
+
+.welcome {
+  color: maroon;
+  text-align: center;
+  font-family: cursive;
+  font-size: 3em;
+  margin-top: 5em;
+    margin-left: 8em;
+    position: absolute;
+  /* background-image: url("https://payload.cargocollective.com/1/20/666861/13467193/R0022978_2500_c.jpg") */
+  margin-top: 5em;
+      margin-left: 8em;
+      position: absolute;
+}
+
+.merchant {
+  font-family: fantasy;
+  color: darkmagenta;
+  text-align: center;
+}
+
+.scrollable {
+        margin: 30px;
+        border: 2px solid black;
+        padding: 25px;
+        background: url(https://payload.cargocollective.com/1/20/666861/13232262/R0020736_2500_c.jpg);
+        background-repeat: no-repeat;
+        background-size: auto;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        height: 100px;
+        width: 300px;
+        overflow-y: scroll;
+      }
+
+.scrollable_2 {
+        margin: 30px;
+        border: 2px solid black;
+        padding: 25px;
+        background: url("http://northernlauren.com/wp-content/uploads/2018/04/IMG_20180315_101703-750x375.jpg");
+        background-repeat: no-repeat;
+        background-size: auto;
+        /* opacity: 0.6; */
+        filter: alpha(opacity=60);
+        height: 200px;
+        width: 600px;
+        overflow-y: scroll;
+      }
+
+.scrollable_3 {
+        margin: 30px;
+        border: 2px solid black;
+        padding: 25px;
+        background: url("https://payload.cargocollective.com/1/20/666861/12921880/R0007718_3488.jpg");
+        background-repeat: no-repeat;
+        background-size: auto;
+        /* opacity: 0.6; */
+        filter: alpha(opacity=60);
+        height: 800px;
+        width: 700px;
+        overflow-y: scroll;
+      }
+
+.scrollable_4 {
+        margin: 30px;
+        border: 2px solid black;
+        padding: 25px;
+        background-color: beige;
+        /* background: url("https://payload.cargocollective.com/1/20/666861/12921880/R0007718_3488.jpg"); */
+        background-repeat: no-repeat;
+        background-size: auto;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        height: 400px;
+        width: 500px;
+        overflow-y: scroll;
+      }
+
+.scrollable_5 {
+        margin: 30px;
+        /* border: 2px solid black; */
+        padding: 25px;
+        /* background: url(https://payload.cargocollective.com/1/20/666861/13232262/R0020736_2500_c.jpg); */
+        background-repeat: no-repeat;
+        background-size: auto;
+        /* opacity: 0.6; */
+        filter: alpha(opacity=60);
+        height: 50px;
+        width: 500px;
+      }
+
+.address {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.50em;
+  color: maroon;
+  text-align: center;
+  line-height: 0%;
+}
+
+h1 {
+  font-family: fantasy;
+}
+
+h2 {
+  font-family: fantasy;
+  color: coral;
+}
+
+h3 {
+  font-family: fantasy;
+}
+
+p {
+  font-family: fantasy;
+}
+
+nav {
+    text-align: center;
+    font: status-bar;
+    font-family: fantasy;
+    background: url("https://payload.cargocollective.com/1/20/666861/12921880/R0007718_3488.jpg");
+    font-size: 1em;
+    width: 700px;
+}
+
+.merchant_name {
+  text-align: center;
+  font-size: 1.75em;
+}

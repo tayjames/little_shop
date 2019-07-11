@@ -1,24 +1,28 @@
-<% if cart.contents != Hash.new(0) %>
-  <%= link_to "Empty Cart", "/cart", method: :delete %>
-  <%= link_to "Checkout", "/orders/new" %>
-<% end %>
+<center>
+  <% if cart.contents != Hash.new(0) %>
+    <%= link_to "Empty Cart", "/cart", method: :delete %>
+    <%= link_to "Checkout", "/orders/new" %>
+  <% end %>
 
-<% @items.each do |item| %>
-  <section id="item-<%= item.id %>">
-    <%= image_tag item.image, alt: "image of #{item.name}" %>
-    <h1>Item: <%= link_to item.name, "/items/#{item.id}" %></h1>
-    <p>Description: <%= item.description %></p>
-    <p>Merchant: <%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
-    <p>Price: <%= number_to_currency(item.price) %></p>
-    <p>Quantity: <%= cart.item_count(item.id) %></p>
-    <p>Subtotal: <%= number_to_currency(cart.subtotal(item.id)) %></p>
+  <section class="scrollable_3">
+    <% @items.each do |item| %>
+      <section id="item-<%= item.id %>">
+        <%= image_tag item.image, alt: "image of #{item.name}" %>
+        <h1>Item: <%= link_to item.name, "/items/#{item.id}" %></h1>
+        <p>Description: <%= item.description %></p>
+        <p>Merchant: <%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
+        <p>Price: <%= number_to_currency(item.price) %></p>
+        <p>Quantity: <%= cart.item_count(item.id) %></p>
+        <p>Subtotal: <%= number_to_currency(cart.subtotal(item.id)) %></p>
 
-    <% if cart.item_count(item.id) < item.inventory %>
-      <%= button_to "+", "/cart/items/#{item.id}" %>
-    <% end %>
+        <% if cart.item_count(item.id) < item.inventory %>
+          <%= button_to "+", "/cart/items/#{item.id}" %>
+        <% end %>
 
-    <%= button_to "-", "/cart/items/#{item.id}", method: :patch %>
-    <%= button_to "Remove Item", "/cart/#{item.id}", method: :delete %>
-  </section>
-<% end %>
-<h3>Grand Total: <%= number_to_currency(cart.grandtotal(cart.item_ids)) %></h3>
+        <%= button_to "-", "/cart/items/#{item.id}", method: :patch %>
+        <%= button_to "Remove Item", "/cart/#{item.id}", method: :delete %>
+      </section>
+  < /section>
+  <% end %>
+  <h3>Grand Total: <%= number_to_currency(cart.grandtotal(cart.item_ids)) %></h3>
+</center>

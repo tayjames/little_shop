@@ -55,13 +55,13 @@ RSpec.describe "Merchant Statistics", type: :feature do
         visit "/merchants/#{@brian.id}"
 
         within "#statistics-#{@brian.id}" do
-          expect(page).to have_content('Cities you can find our monsters: ["Paris", "Portland"]')
+          expect(page).to have_content("Cities you can find our monsters: Paris, Portland")
         end
 
         visit "/merchants/#{@megan.id}"
 
         within "#statistics-#{@megan.id}" do
-          expect(page).to have_content('Cities you can find our monsters: ["Heaven", "Los Angeles"]')
+          expect(page).to have_content("Cities you can find our monsters: Heaven, Los Angeles")
         end
       end
     end
