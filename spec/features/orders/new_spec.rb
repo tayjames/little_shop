@@ -92,8 +92,8 @@ RSpec.describe "New Order Page", type: :feature do
 
           new_order = Order.last
 
-          order_items_1 = OrderItem.create(item: @ogre, order: new_order, quantity: 1, price_per_item: 20.0)
-          order_items_2 = OrderItem.create(item: @hippo, order: new_order, quantity: 2, price_per_item: 50.0)
+          ogre_item_quantity = 1
+          hippo_item_quantity = 2
 
           expect(current_path).to eq("/orders/#{new_order.id}")
 
@@ -103,23 +103,23 @@ RSpec.describe "New Order Page", type: :feature do
           expect(page).to have_content(new_order.state)
           expect(page).to have_content(new_order.zip)
 
-          within "#item-#{order_items_1.item_id}" do
-            expect(page).to have_content("Item: #{order_items_1.item.name}")
-            expect(page).to have_content("Merchant: #{order_items_1.item.merchant.name}")
-            expect(page).to have_content("Price: #{number_to_currency(order_items_1.price_per_item)}")
-            expect(page).to have_content("Quantity: #{order_items_1.quantity}")
-            expect(page).to have_content("Subtotal: #{number_to_currency(order_items_1.subtotal)}")
+          within "#item-#{@ogre.id}" do
+            expect(page).to have_content("Item: #{@ogre.name}")
+            expect(page).to have_content("Merchant: #{@ogre.merchant.name}")
+            expect(page).to have_content("Price: #{number_to_currency(@ogre.price)}")
+            expect(page).to have_content("Quantity: #{ogre_item_quantity}")
+            expect(page).to have_content("Subtotal: #{number_to_currency((@ogre.price) * ogre_item_quantity)}")
           end
 
-          within "#item-#{order_items_2.item_id}" do
-            expect(page).to have_content("Item: #{order_items_2.item.name}")
-            expect(page).to have_content("Merchant: #{order_items_2.item.merchant.name}")
-            expect(page).to have_content("Price: #{number_to_currency(order_items_2.price_per_item)}")
-            expect(page).to have_content("Quantity: #{order_items_2.quantity}")
-            expect(page).to have_content("Subtotal: #{number_to_currency(order_items_2.subtotal)}")
+          within "#item-#{@hippo.id}" do
+            expect(page).to have_content("Item: #{@hippo.name}")
+            expect(page).to have_content("Merchant: #{@hippo.merchant.name}")
+            expect(page).to have_content("Price: #{number_to_currency(@hippo.price)}")
+            expect(page).to have_content("Quantity: #{hippo_item_quantity}")
+            expect(page).to have_content("Subtotal: #{number_to_currency((@hippo.price) * hippo_item_quantity)}")
           end
 
-          expect(page).to have_content("Created on: #{new_order.created_at}")
+          expect(page).to have_content("Created on: #{new_order.created_at.to_date}")
           expect(page).to have_content("Grand Total: #{number_to_currency(120)}")
         end
       end
