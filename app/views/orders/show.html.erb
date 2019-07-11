@@ -1,22 +1,25 @@
-<h1>My Order:</h1>
+<center>
+  <h1>My Order:</h1>
+  <section class="scrollable">
 
-<h2>Shipping Information:</h2>
-<p><%= @order.name %></p>
-<p><%= @order.address %></p>
-<p><%= @order.city %></p>
-<p><%= @order.state %></p>
-<p><%= @order.zip %></p>
+    <h2>Shipping Information:</h2>
+    <p><%= @order.name %></p>
+    <p><%= @order.address %></p>
+    <p><%= @order.city %></p>
+    <p><%= @order.state %></p>
+    <p><%= @order.zip %></p>
 
-<h2>Order Details:</h2>
-<% @order_items.each do |order_item| %>
-  <section id="item-<%= order_item.item_id %>">
-    <p>Item: <%= link_to order_item.item.name, "/items/#{order_item.item.id}" %></p>
-    <p>Merchant: <%= link_to order_item.item.merchant.name, "/merchants/#{order_item.item.merchant.id}" %></p>
-    <p>Price: <%= number_to_currency(order_item.price_per_item) %></p>
-    <p>Quantity: <%= order_item.quantity %></p>
-    <p>Subtotal: <%= number_to_currency(order_item.subtotal) %></p>
+    <h2>Order Details:</h2>
+    <% @order_items.each do |order_item| %>
+      <section id="item-<%= order_item.item_id %>">
+        <p>Item: <%= link_to order_item.item.name, "/items/#{order_item.item.id}" %></p>
+        <p>Merchant: <%= link_to order_item.item.merchant.name, "/merchants/#{order_item.item.merchant.id}" %></p>
+        <p>Price: <%= number_to_currency(order_item.price_per_item) %></p>
+        <p>Quantity: <%= order_item.quantity %></p>
+        <p>Subtotal: <%= number_to_currency(order_item.subtotal) %></p>
+      </section>
+    <% end %>
   </section>
-<% end %>
-
-<h3>Grand Total: <%= number_to_currency(@order_items.grandtotal(@order)) %></h3>
-<h2>Created on: <%= @order.created_at %></h2>
+  <h3>Grand Total: <%= number_to_currency(@order_items.grandtotal(@order)) %></h3>
+  <h2>Created on: <%= @order.created_at %></h2>
+</center>

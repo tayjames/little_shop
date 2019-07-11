@@ -12,7 +12,7 @@ RSpec.describe "Cart Creation", type: :feature do
 
     it "In the Item's Show page, I see a link or button to add this item to my cart" do
       visit "/items"
-
+      save_and_open_page
       expect(page).to have_link(@hippo.name)
       click_on(@hippo.name)
       expect(current_path).to eq("/items/#{@hippo.id}")
@@ -20,7 +20,7 @@ RSpec.describe "Cart Creation", type: :feature do
       expect(page).to have_button("Add Item")
       click_on("Add Item")
       expect(current_path).to eq("/items")
-      
+
       expect(page).to have_content("#{@hippo.name} has been added to your cart.")
       expect(page).to have_content("Cart: 1")
 
