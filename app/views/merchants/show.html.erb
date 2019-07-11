@@ -18,6 +18,7 @@
     </section>
   </section>
 
+
   <%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
 
   <% if !@merchant.has_orders? %>

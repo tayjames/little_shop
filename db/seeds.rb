@@ -14,3 +14,4 @@ hof.items.create!(name: 'Assorted Flowers', description: "Los flores", price: 20
 val.items.create!(name: 'Roses/Flowers/Card Combo', description: "Ask about a la cart options.", price: 200, image: 'https://payload.cargocollective.com/1/20/666861/13467193/R0022978_2500_c.jpg', active: true, inventory: 5 )
 leigh.items.create!(name: 'Pie', description: "Only pumpkin", price: 50, image: 'https://static1.squarespace.com/static/55414f2ae4b0da2ec4c5e756/55769824e4b03fee62698458/55769944e4b099e58035be5d/1433835845633/LJwholeapplepie_web.jpg?format=2500w', active: true, inventory: 3 )
 hoku.items.create!(name: 'Agua Fresca', description: ":,)", price: 530, image: 'https://foodchannelcom.files.wordpress.com/2018/01/watermelon-juice.jpg?w=1000&h=600&crop=1', active: true, inventory: 3 )
+
