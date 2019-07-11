@@ -106,10 +106,7 @@ body {
         filter: alpha(opacity=60);
         height: 50px;
         width: 500px;
-
       }
-
-
 
 .address {
   font-family: 'Raleway', sans-serif;
@@ -135,7 +132,6 @@ h3 {
 p {
   font-family: fantasy;
 }
-
 
 nav {
     text-align: center;
