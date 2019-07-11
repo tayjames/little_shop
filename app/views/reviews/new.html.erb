@@ -1,12 +1,23 @@
-<%= form_tag("/items/#{@item.id}/reviews") do %>
-  <%= label_tag :title %>
-  <%= text_field_tag :title %>
+<style>
+  body {
+    background-image: url("https://payload.cargocollective.com/1/20/666861/13232262/R0020534_2500_c.jpg")
+  }
+</style>
 
-  <%= label_tag :content, "Description" %>
-  <%= text_field_tag :content %>
+<center>
+  <h1>Tell us what you think!</h1>
+  <section class="scrollable_5">
+    <%= form_tag("/items/#{@item.id}/reviews") do %>
+      <%= label_tag :title %>
+      <%= text_field_tag :title %>
 
-  <%= label_tag :rating %>
-  <%= number_field_tag :rating, nil, min: 1, max: 5 %>
+      <%= label_tag :content, "Description" %>
+      <%= text_field_tag :content %>
 
-  <%= submit_tag "Create Review" %>
-<% end %>
+      <%= label_tag :rating %>
+      <%= number_field_tag :rating, nil, min: 1, max: 5 %>
+
+      <%= submit_tag "Create Review" %>
+    <% end %>
+  </section>
+</center>

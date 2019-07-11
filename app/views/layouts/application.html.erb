@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MonsterShop</title>
+    <title>Tienda</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -9,12 +9,14 @@
   </head>
 
   <body>
+    <center>
     <nav>
       <%= link_to 'Merchants', '/merchants' %>
       <%= link_to 'Items', '/items' %>
+      <%= link_to 'Cart', '/cart' %>
       <p>Cart: <%= cart.total %></p>
     </nav>
-
+    </center>
     <% flash.each do |flash_type, flash_message| %>
       <%= flash_message %>
     <% end %>

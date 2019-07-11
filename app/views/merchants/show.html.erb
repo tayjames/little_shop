@@ -1,20 +1,27 @@
-<h1><%= @merchant.name %></h1>
-
-<section class='address'>
-  <p><%= @merchant.address %></p>
-  <p><%= @merchant.city %> <%= @merchant.state %> <%= @merchant.zip %></p>
+<section class="merchant_name">
+  <h1><%= @merchant.name %></h1>
 </section>
 
-<h2>Statistics:</h2>
+<center>
+  <section class="scrollable_3">
+    <section class='address'>
+      <p><%= @merchant.address %></p>
+      <p><%= @merchant.city %> <%= @merchant.state %> <%= @merchant.zip %></p>
+    </section>
 
-<section id="statistics-<%= @merchant.id %>">
-  <p>Count of Items: <%= @merchant.count_of_items %></p>
-  <p>Average Item Price: <%= number_to_currency(@merchant.average_item_price) %></p>
-  <p>Cities you can find our monsters: <%= @merchant.distinct_cities.join(", ") %></p>
-</section>
+    <h2>Statistics:</h2>
 
-<%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
+    <section class="scrollable" id="statistics-<%= @merchant.id %>">
+      <p>Count of Items: <%= @merchant.count_of_items %></p>
+      <p>Average Item Price: <%= number_to_currency(@merchant.average_item_price) %></p>
+      <p>Cities you can find our monsters: <%= @merchant.distinct_cities %></p>
+    </section>
+  </section>
 
-<% if !@merchant.has_orders? %>
-  <%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
-<% end %>
+
+  <%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
+
+  <% if !@merchant.has_orders? %>
+    <%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
+  <% end %>
+</center>

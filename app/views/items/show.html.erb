@@ -1,51 +1,65 @@
-<section id="item-<%= @item.id %>">
-  <h1><%= @item.name %></h1>
-  <p><%= @item.description %></p>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw">
-  <p>Price: <%= number_to_currency(@item.price) %></p>
-  <p>Sold by: <%= link_to @item.merchant.name, "/merchants/#{@item.merchant_id}" %>, Inventory: <%= @item.inventory %></p>
-  <p><%= @item.active ? "Active" : "Inactive" %></p>
-  <%= button_to 'Add Item', "/cart/#{@item.id}", method: :patch %>
-</section>
+<center>
+  <section class="scrollable_2">
 
-<h2>Reviews:</h2>
-<% @item.reviews.each do |review| %>
-  <section id="review-<%= review.id %>">
-    <h3>Title: <%= review.title %></h3>
-    <p>Description: <%= review.content %></p>
-    <p>Rating: <%= review.rating %></p>
-    <%= link_to 'Edit Review', "/items/#{@item.id}/reviews/#{review.id}/edit" %>
-    <%= button_to 'Delete Review', "/items/#{@item.id}/reviews/#{review.id}", method: :delete %>
+    <section id="item-<%= @item.id %>">
+      <h1><%= @item.name %></h1>
+      <p><%= @item.description %></p>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw">
+      <p>Price: <%= number_to_currency(@item.price) %></p>
+      <p>Sold by: <%= link_to @item.merchant.name, "/merchants/#{@item.merchant_id}" %>, Inventory: <%= @item.inventory %></p>
+      <p><%= @item.active ? "Active" : "Inactive" %></p>
+      <%= button_to 'Add Item', "/cart/#{@item.id}", method: :patch %>
+    </section>
+
+    <h2>Reviews:</h2>
+
+    <section class="scrollable">
+      <% @item.reviews.each do |review| %>
+        <section id="review-<%= review.id %>">
+          <h3>Title: <%= review.title %></h3>
+          <p>Description: <%= review.content %></p>
+          <p>Rating: <%= review.rating %></p>
+          <%= link_to 'Edit Review', "/items/#{@item.id}/reviews/#{review.id}/edit" %>
+          <%= button_to 'Delete Review', "/items/#{@item.id}/reviews/#{review.id}", method: :delete %>
+        </section>
+      <% end %>
   </section>
-<% end %>
 
-<h2>Review Statistics:</h2>
-  <h3>Top Reviews:</h3>
+  <h2>Review Statistics:</h2>
+
+  <section class="scrollable">
+
+    <h3>Top Reviews:</h3>
+
   <section id="top-reviews">
-    <% @item.sort_reviews(:desc, 3).each do |review| %>
+      <% @item.sort_reviews(:desc, 3).each do |review| %>
         <ul>
           <li>Title: <%= review.title %></li>
           <li>Rating: <%= review.rating %></li>
         </ul>
       <% end  %>
     </section>
-
-  <h3>Worst Reviews:</h3>
-  <section id="worst-reviews">
-    <% @item.sort_reviews(:asc, 3).each do |review| %>
-      <ul>
-        <li>Title: <%= review.title %></li>
-        <li>Rating: <%= review.rating %></li>
-      </ul>
-    <% end  %>
   </section>
 
-  <h3>Average Rating: <%= @item.average_rating %></h3>
+  <section class="scrollable">
+    <h3>Worst Reviews:</h3>
+    <section id="worst-reviews">
+        <% @item.sort_reviews(:asc, 3).each do |review| %>
+          <ul>
+            <li>Title: <%= review.title %></li>
+            <li>Rating: <%= review.rating %></li>
+          </ul>
+        <% end  %>
+      </section>
+    </section>
+    <h3>Average Rating: <%= @item.average_rating %></h3>
+  </section>
 
-<%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
+  <%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
 
-<% if !@item.ordered? %>
-  <%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
-<% end %>
+  <% if !@item.ordered? %>
+    <%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
+  <% end %>
 
-<%= link_to 'Add Review', "/items/#{@item.id}/reviews/new" %>
+  <%= link_to 'Add Review', "/items/#{@item.id}/reviews/new" %>
+</center>

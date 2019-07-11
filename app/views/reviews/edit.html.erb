@@ -1,12 +1,16 @@
-<%= form_tag("/items/#{@review.item.id}/reviews/#{@review.id}", method: :patch) do %>
-  <%= label_tag :title %>
-  <%= text_field_tag :title, @review.title %>
+<center>
+  <section class="scrollable_5">
+    <%= form_tag("/items/#{@review.item.id}/reviews/#{@review.id}", method: :patch) do %>
+      <%= label_tag :title %>
+      <%= text_field_tag :title, @review.title %>
 
-  <%= label_tag :content, "Description" %>
-  <%= text_field_tag :content, @review.content %>
+      <%= label_tag :content, "Description" %>
+      <%= text_field_tag :content, @review.content %>
 
-  <%= label_tag :rating %>
-  <%= number_field_tag :rating, @review.rating, min: 1, max: 5 %>
+      <%= label_tag :rating %>
+      <%= number_field_tag :rating, @review.rating, min: 1, max: 5 %>
 
-  <%= submit_tag "Create Review" %>
-<% end %>
+      <%= submit_tag "Create Review" %>
+    <% end %>
+  </section>
+</center>

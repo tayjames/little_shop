@@ -1,6 +1,17 @@
-<%= link_to 'New Merchant', '/merchants/new' %>
-<% @merchants.each do |merchant| %>
-  <section id='merchant-<%= merchant.id %>'>
-    <h2><%= link_to merchant.name, "/merchants/#{merchant.id}" %></h2>
+<style>
+  body {
+    background-image: url("https://payload.cargocollective.com/1/20/666861/13232262/R0020534_2500_c.jpg")
+        }
+</style>
+
+<center>
+  <h1>Merchant Index</h1>
+  <section class="scrollable_4">
+    <% @merchants.each do |merchant| %>
+      <section class="merchant" id='merchant-<%= merchant.id %>'>
+        <h2><%= link_to merchant.name, "/merchants/#{merchant.id}" %></h2>
+      </section>
+    <% end %>
   </section>
-<% end %>
+<%= link_to 'New Merchant', '/merchants/new' %>
+</center>
